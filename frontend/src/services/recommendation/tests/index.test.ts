@@ -1,12 +1,12 @@
-import recommendationService from './recommendation.service';
-import mockProducts from '../mocks/mockProducts';
+import recommendationService from '..';
+import mockProducts from '../../../mocks/mockProducts';
 
 describe('recommendationService', () => {
   test('Retorna recomendação correta para SingleProduct com base nas preferências selecionadas', () => {
     const formData = {
       selectedPreferences: ['Integração com chatbots'],
       selectedFeatures: ['Chat ao vivo e mensagens automatizadas'],
-      selectedRecommendationType: 'SingleProduct',
+      selectedRecommendationType: 'SingleProduct' as const,
     };
 
     const recommendations = recommendationService.getRecommendations(
@@ -29,7 +29,7 @@ describe('recommendationService', () => {
         'Rastreamento de interações com clientes',
         'Rastreamento de comportamento do usuário',
       ],
-      selectedRecommendationType: 'MultipleProducts',
+      selectedRecommendationType: 'MultipleProducts' as const,
     };
 
     const recommendations = recommendationService.getRecommendations(
@@ -54,7 +54,7 @@ describe('recommendationService', () => {
         'Rastreamento de interações com clientes',
         'Rastreamento de comportamento do usuário',
       ],
-      selectedRecommendationType: 'SingleProduct',
+      selectedRecommendationType: 'SingleProduct' as const,
     };
 
     const recommendations = recommendationService.getRecommendations(
@@ -68,8 +68,11 @@ describe('recommendationService', () => {
 
   test('Retorna o último match em caso de empate para SingleProduct', () => {
     const formData = {
-      selectedPreferences: ['Automação de marketing', 'Integração com chatbots'],
-      selectedRecommendationType: 'SingleProduct',
+      selectedPreferences: [
+        'Automação de marketing',
+        'Integração com chatbots',
+      ],
+      selectedRecommendationType: 'SingleProduct' as const,
     };
 
     const recommendations = recommendationService.getRecommendations(
@@ -79,5 +82,26 @@ describe('recommendationService', () => {
 
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Conversas');
+  });
+
+  test('Retorna os maiores matchs em caso de empate para MultipleProduct', () => {
+    const formData = {
+      selectedPreferences: [
+        'Automação de marketing',
+        'Integração com chatbots',
+      ],
+      selectedRecommendationType: 'MultipleProducts' as const,
+    };
+
+    const recommendations = recommendationService.getRecommendations(
+      formData,
+      mockProducts
+    );
+
+    expect(recommendations).toHaveLength(2);
+    expect(recommendations.map((product) => product.name)).toEqual([
+      'RD Conversas',
+      'RD Station Marketing',
+    ]);
   });
 });

@@ -1,6 +1,8 @@
-const mockProducts = [
+import { RDProduct } from '../services/product/types';
+
+const mockProducts: RDProduct[] = [
   {
-    id: 1,
+    id: '1',
     name: 'RD Station CRM',
     category: 'Vendas',
     preferences: [
@@ -15,7 +17,7 @@ const mockProducts = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     name: 'RD Station Marketing',
     category: 'Marketing',
     preferences: [
@@ -30,7 +32,7 @@ const mockProducts = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     name: 'RD Conversas',
     category: 'Omnichannel',
     preferences: [
@@ -45,7 +47,7 @@ const mockProducts = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     name: 'RD Mentor AI',
     category: 'Uso de Inteligência Artificial',
     preferences: [
