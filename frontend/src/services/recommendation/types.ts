@@ -1,12 +1,9 @@
+import { FormValues } from '../../hooks/useForm/types';
 import { RDProduct } from '../product/types';
 
 export type RecommendationService = {
   getRecommendations: (
-    formData?: {
-      selectedPreferences?: string[];
-      selectedFeatures?: string[];
-      selectedRecommendationType: 'SingleProduct' | 'MultipleProducts';
-    },
+    formData?: FormValues,
     products?: RDProduct[]
   ) => RDProduct[];
 };

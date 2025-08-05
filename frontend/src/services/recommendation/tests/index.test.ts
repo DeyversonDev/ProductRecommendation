@@ -68,6 +68,7 @@ describe('recommendationService', () => {
 
   test('Retorna o último match em caso de empate para SingleProduct', () => {
     const formData = {
+      selectedFeatures: [],
       selectedPreferences: [
         'Automação de marketing',
         'Integração com chatbots',
@@ -86,6 +87,7 @@ describe('recommendationService', () => {
 
   test('Retorna os maiores matchs em caso de empate para MultipleProduct', () => {
     const formData = {
+      selectedFeatures: [],
       selectedPreferences: [
         'Automação de marketing',
         'Integração com chatbots',
