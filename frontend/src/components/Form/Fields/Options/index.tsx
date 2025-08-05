@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import OptionItem from '../components/OptionItems';
+import OptionItem from './components/OptionItems';
 
 import { Props } from './types';
 

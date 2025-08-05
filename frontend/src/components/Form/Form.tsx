@@ -24,10 +24,7 @@ function Form() {
   };
 
   return (
-    <form
-      className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md"
-      onSubmit={handleSubmit}
-    >
+    <form className="mb-12" onSubmit={handleSubmit}>
       <Options
         title="Preferências"
         options={preferences}

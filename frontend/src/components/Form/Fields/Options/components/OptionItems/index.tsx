@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '../../../../shared/Checkbox';
+import Checkbox from '../../../../../shared/Checkbox';
 import { Props } from './types';
 
 function OptionItem({ option, checked, onChange }: Props) {
