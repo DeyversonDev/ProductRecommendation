@@ -1,4 +1,4 @@
-import { Preferences, Features, RecommendationType } from './Fields';
+import { Options, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
@@ -39,11 +39,16 @@ function Form() {
       className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md"
       onSubmit={handleSubmit}
     >
-      <Preferences
-        preferences={preferences}
-        onPreferenceChange={onPreferenceChange}
+      <Options
+        title="Preferências"
+        options={preferences}
+        onChange={onPreferenceChange}
       />
-      <Features features={features} onFeatureChange={onFeatureChange} />
+      <Options
+        title="Funcionalidades"
+        options={features}
+        onChange={onFeatureChange}
+      />
       <RecommendationType
         onRecommendationTypeChange={onRecommendationTypeChange}
       />
