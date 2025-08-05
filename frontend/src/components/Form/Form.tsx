@@ -24,7 +24,7 @@ function Form() {
   };
 
   return (
-    <form className="mb-12" onSubmit={handleSubmit}>
+    <form className="mb-12 lg:grid grid-cols-2 gap-3" onSubmit={handleSubmit}>
       <Options
         title="Preferências"
         options={preferences}
@@ -37,12 +37,15 @@ function Form() {
         selectedOptions={formData.selectedFeatures}
         onChange={(option) => handleChange('selectedFeatures', option)}
       />
-      <RecommendationType
-        onRecommendationTypeChange={(option) =>
-          handleChange('selectedRecommendationType', option)
-        }
-      />
-      <SubmitButton text="Obter recomendação" />
+
+      <div>
+        <RecommendationType
+          onRecommendationTypeChange={(option) =>
+            handleChange('selectedRecommendationType', option)
+          }
+        />
+        <SubmitButton text="Obter recomendação" />
+      </div>
     </form>
   );
 }
