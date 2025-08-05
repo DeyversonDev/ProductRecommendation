@@ -5,7 +5,7 @@ function RecommendationList() {
   const { recommendedProducts } = useSession();
 
   return (
-    <div>
+    <div className="p-4  bg-gray-50 rounded-xl">
       <h2 className="text-lg font-bold mb-2">Lista de Recomendações:</h2>
 
       {recommendedProducts.length === 0 && (

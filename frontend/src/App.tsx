@@ -1,16 +1,20 @@
 import Form from './components/Form/Form';
 import RecommendationList from './components/RecommendationList';
 import { SessionProvider } from './contexts/useSession';
+import rdLogo from './assets/images/rd_logo.png';
 
 function App() {
   return (
     <SessionProvider>
-      <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold mb-8">
-          Recomendador de Produtos RD Station
-        </h1>
+      <div className="bg-white min-h-screen flex flex-col justify-center items-center pb-36">
+        <div className="mr-auto p-8 align-items-center justify-center ">
+          <img src={rdLogo} alt="RD Station Logo" className="h-8" />
+          <h1 className="text-3xl font-bold mt-4">
+            Recomendador de Produtos RD Station
+          </h1>
+        </div>
 
-        <div className="bg-gray-50 p-8">
+        <div className="p-8">
           <div className="mb-4">
             <p className="text-lg">
               Bem-vindo ao Recomendador de Produtos RD Station. Aqui você pode
