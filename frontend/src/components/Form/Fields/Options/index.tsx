@@ -18,8 +18,8 @@ function Options({ title, options, selectedOptions, onChange }: Props) {
   );
 
   return (
-    <div className="p-4 mb-4 bg-gray-50 rounded-xl">
-      <h2 className="text-lg font-bold mb-2">{title}:</h2>
+    <div className="p-5 mb-4 background-section rounded-xl">
+      <h2 className="text-color text-lg font-bold mb-2">{title}:</h2>
       <ul>{options.map(RenderOptionItem)}</ul>
     </div>
   );

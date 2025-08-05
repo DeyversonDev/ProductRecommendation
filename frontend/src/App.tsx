@@ -2,21 +2,29 @@ import Form from './components/Form/Form';
 import RecommendationList from './components/RecommendationList';
 import { SessionProvider } from './contexts/useSession';
 import rdLogo from './assets/images/rd_logo.png';
+import { ThemeSwitch } from './components/ThemeSwitch';
 
 function App() {
   return (
     <SessionProvider>
-      <div className="bg-white min-h-screen flex flex-col justify-center items-center pb-36">
-        <div className="mr-auto p-8 align-items-center justify-center ">
-          <img src={rdLogo} alt="RD Station Logo" className="h-8" />
-          <h1 className="text-3xl font-bold mt-4">
-            Recomendador de Produtos RD Station
-          </h1>
+      <div className="background min-h-screen flex flex-col pb-36">
+        <div className="flex  p-8">
+          <div className="mr-auto align-items-center justify-center ">
+            <img
+              src={rdLogo}
+              alt="RD Station Logo"
+              className="h-8 dark:invert dark:brightness-0"
+            />
+            <h1 className="text-color text-3xl font-bold mt-4">
+              Recomendador de Produtos RD Station
+            </h1>
+          </div>
+          <ThemeSwitch />
         </div>
 
-        <div className="p-8">
-          <div className="mb-4">
-            <p className="text-lg">
+        <div className="px-8">
+          <div className="mt-4 mb-8">
+            <p className="text-lg text-color">
               Bem-vindo ao Recomendador de Produtos RD Station. Aqui você pode
               encontrar uma variedade de produtos da RD Station, cada um
               projetado para atender às necessidades específicas do seu negócio.

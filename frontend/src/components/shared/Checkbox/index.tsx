@@ -8,12 +8,12 @@ function Checkbox({ children, ...props }: Props) {
     >
       <input
         type="checkbox"
-        className={`appearance-none h-5 w-5 border-2 border-gray-400 checked:bg-blue-500 checked:border-blue-500 checked:shadow-[inset_0_0_0_2px_white]
+        className={`appearance-none h-5 w-5 border-2 border-gray-400 checked:bg-blue-500 checked:border-blue-500 checked:shadow-[inset_0_0_0_2px_white] dark:checked:shadow-[inset_0_0_0_2px_#282e34]
           ${props.type === 'radio' ? 'rounded-full' : 'rounded-md'}`}
         {...props}
       />
 
-      <span className="ml-2">{children}</span>
+      <span className="ml-2 text-color">{children}</span>
     </label>
   );
 }

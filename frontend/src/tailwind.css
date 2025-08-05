@@ -4,6 +4,22 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+* {
+  @apply transition-colors duration-500;
+}
+
 .option-card {
-  @apply w-full flex items-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-200;
+  @apply w-full flex items-center p-6 bg-white dark:bg-[#282e34] rounded-xl shadow hover:shadow-lg transition-shadow duration-200;
+}
+
+.text-color {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+.background {
+  @apply bg-gray-100 dark:bg-[#1b1f23];
+}
+
+.background-section {
+  @apply bg-gray-100 dark:bg-[#202529];
 }
