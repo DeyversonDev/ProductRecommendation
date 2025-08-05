@@ -10,7 +10,7 @@ function App() {
           Recomendador de Produtos RD Station
         </h1>
 
-        <div className="p-8 rounded-lg lg:grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="bg-gray-50 p-8 rounded-lg lg:grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="col-span-2 mb-4">
             <p className="text-lg">
               Bem-vindo ao Recomendador de Produtos RD Station. Aqui você pode

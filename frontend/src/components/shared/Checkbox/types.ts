@@ -3,4 +3,5 @@ export type Props = {} & Omit<
   'type'
 > & {
     type?: 'checkbox' | 'radio';
+    onChange: () => void;
   };

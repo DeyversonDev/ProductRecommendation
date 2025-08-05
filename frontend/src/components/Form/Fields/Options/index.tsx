@@ -6,12 +6,13 @@ import { Props } from './types';
 function Options({ title, options, selectedOptions, onChange }: Props) {
   const RenderOptionItem = useCallback(
     (option: string) => (
-      <OptionItem
-        key={option}
-        option={option}
-        checked={selectedOptions.includes(option)}
-        onChange={onChange}
-      />
+      <div key={option} className="mb-3">
+        <OptionItem
+          option={option}
+          checked={selectedOptions.includes(option)}
+          onChange={onChange}
+        />
+      </div>
     ),
     [onChange, selectedOptions]
   );
