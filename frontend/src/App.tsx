@@ -1,5 +1,5 @@
 import Form from './components/Form/Form';
-import RecommendationList from './components/RecommendationList/RecommendationList';
+import RecommendationList from './components/RecommendationList';
 import { SessionProvider } from './contexts/useSession';
 
 function App() {

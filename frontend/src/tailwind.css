@@ -3,5 +3,5 @@
 @import "tailwindcss/utilities";
 
 .option-card {
-  @apply w-full flex items-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer;
+  @apply w-full flex items-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-200;
 }
