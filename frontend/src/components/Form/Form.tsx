@@ -23,17 +23,6 @@ function Form() {
     setRecommendedProducts(dataRecommendations);
   };
 
-  const onPreferenceChange = (
-    selected: (typeof formData)['selectedPreferences']
-  ) => handleChange('selectedPreferences', selected);
-
-  const onFeatureChange = (selected: string[]) =>
-    handleChange('selectedFeatures', selected);
-
-  const onRecommendationTypeChange = (
-    selected: (typeof formData)['selectedRecommendationType']
-  ) => handleChange('selectedRecommendationType', selected);
-
   return (
     <form
       className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md"
@@ -42,15 +31,19 @@ function Form() {
       <Options
         title="Preferências"
         options={preferences}
-        onChange={onPreferenceChange}
+        selectedOptions={formData.selectedPreferences}
+        onChange={(option) => handleChange('selectedPreferences', option)}
       />
       <Options
         title="Funcionalidades"
         options={features}
-        onChange={onFeatureChange}
+        selectedOptions={formData.selectedFeatures}
+        onChange={(option) => handleChange('selectedFeatures', option)}
       />
       <RecommendationType
-        onRecommendationTypeChange={onRecommendationTypeChange}
+        onRecommendationTypeChange={(option) =>
+          handleChange('selectedRecommendationType', option)
+        }
       />
       <SubmitButton text="Obter recomendação" />
     </form>
