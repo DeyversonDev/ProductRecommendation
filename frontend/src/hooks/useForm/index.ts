@@ -1,9 +1,10 @@
 import { useReducer } from 'react';
-import { FormValues } from './types';
+import { Action, FormValues } from './types';
 
-type Action = {
-  field: keyof FormValues;
-  value: string;
+const initialState: FormValues = {
+  selectedPreferences: [],
+  selectedFeatures: [],
+  selectedRecommendationType: 'SingleProduct',
 };
 
 const formReducer = (state: FormValues, action: Action): FormValues => {
@@ -34,7 +35,7 @@ const formReducer = (state: FormValues, action: Action): FormValues => {
   return actions[field]();
 };
 
-const useForm = (initialState: FormValues) => {
+const useForm = () => {
   const [formData, setFormData] = useReducer(formReducer, initialState);
 
   const handleChange = (field: keyof FormValues, value: Action['value']) => {

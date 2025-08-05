@@ -8,11 +8,7 @@ function Form() {
   const { setRecommendedProducts, products, preferences, features } =
     useSession();
 
-  const { formData, handleChange } = useForm({
-    selectedPreferences: [],
-    selectedFeatures: [],
-    selectedRecommendationType: '',
-  });
+  const { formData, handleChange } = useForm();
 
   const { getRecommendations } = useRecommendations(products);
 
@@ -40,6 +36,7 @@ function Form() {
 
       <div>
         <RecommendationType
+          value={formData.selectedRecommendationType}
           onRecommendationTypeChange={(option) =>
             handleChange('selectedRecommendationType', option)
           }
