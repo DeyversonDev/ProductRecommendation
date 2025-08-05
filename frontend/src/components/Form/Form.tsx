@@ -1,5 +1,5 @@
 import { Options, RecommendationType } from './Fields';
-import { SubmitButton } from './SubmitButton';
+import SubmitButton from './SubmitButton';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
 import { useSession } from '../../contexts/useSession';
