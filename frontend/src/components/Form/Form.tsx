@@ -1,13 +1,12 @@
-// Form.js
-
-import React, { useEffect } from 'react';
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
 import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
+import { useSession } from '../../contexts/useSession';
 
 function Form() {
+  const { setRecommendedProducts } = useSession();
   const { preferences, features, products } = useProducts();
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
@@ -15,16 +14,25 @@ function Form() {
     selectedRecommendationType: '',
   });
 
-  const { getRecommendations, recommendations } = useRecommendations(products);
+  const { getRecommendations } = useRecommendations(products);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const dataRecommendations = getRecommendations(formData);
 
-    /**
-     * Defina aqui a lógica para atualizar as recomendações e passar para a lista de recomendações
-     */
+    setRecommendedProducts(dataRecommendations);
   };
+
+  const onPreferenceChange = (
+    selected: (typeof formData)['selectedPreferences']
+  ) => handleChange('selectedPreferences', selected);
+
+  const onFeatureChange = (selected: string[]) =>
+    handleChange('selectedFeatures', selected);
+
+  const onRecommendationTypeChange = (
+    selected: (typeof formData)['selectedRecommendationType']
+  ) => handleChange('selectedRecommendationType', selected);
 
   return (
     <form
@@ -33,20 +41,11 @@ function Form() {
     >
       <Preferences
         preferences={preferences}
-        onPreferenceChange={(selected) =>
-          handleChange('selectedPreferences', selected)
-        }
+        onPreferenceChange={onPreferenceChange}
       />
-      <Features
-        features={features}
-        onFeatureChange={(selected) =>
-          handleChange('selectedFeatures', selected)
-        }
-      />
+      <Features features={features} onFeatureChange={onFeatureChange} />
       <RecommendationType
-        onRecommendationTypeChange={(selected) =>
-          handleChange('selectedRecommendationType', selected)
-        }
+        onRecommendationTypeChange={onRecommendationTypeChange}
       />
       <SubmitButton text="Obter recomendação" />
     </form>

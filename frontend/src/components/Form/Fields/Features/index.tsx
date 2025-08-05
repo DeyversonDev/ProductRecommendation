@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Checkbox from '../../shared/Checkbox';
+import Checkbox from '../../../shared/Checkbox';
+import { Props } from './types';
 
-function Features({ features, selectedFeatures = [], onFeatureChange }) {
-  const [currentFeatures, setCurrentFeatures] = useState(selectedFeatures)
+function Features({ features, onFeatureChange }: Props) {
+  const [currentFeatures, setCurrentFeatures] = useState<string[]>([]);
 
-  const handleFeatureChange = (feature) => {
+  const handleFeatureChange = (feature: string) => {
     const updatedFeatures = currentFeatures.includes(feature)
       ? currentFeatures.filter((pref) => pref !== feature)
       : [...currentFeatures, feature];
