@@ -1,13 +1,13 @@
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
-import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
 import { useSession } from '../../contexts/useSession';
 
 function Form() {
-  const { setRecommendedProducts } = useSession();
-  const { preferences, features, products } = useProducts();
+  const { setRecommendedProducts, products, preferences, features } =
+    useSession();
+
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],

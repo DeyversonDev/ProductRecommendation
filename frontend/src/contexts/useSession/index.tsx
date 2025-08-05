@@ -1,11 +1,14 @@
 import React, { createContext, useContext, useState } from 'react';
 import { SessionContextType, SessionProviderProps } from './types';
+import useProducts from '../../hooks/useProducts';
 
 const SessionContext = createContext<SessionContextType | undefined>(undefined);
 
 export const SessionProvider: React.FC<SessionProviderProps> = ({
   children,
 }) => {
+  const { preferences, features, products } = useProducts();
+
   const [recommendedProducts, setRecommendedProducts] = useState<
     SessionContextType['recommendedProducts']
   >([]);
@@ -13,6 +16,9 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
   const contextValue: SessionContextType = {
     recommendedProducts,
     setRecommendedProducts,
+    preferences,
+    features,
+    products,
   };
 
   return (
