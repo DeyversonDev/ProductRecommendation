@@ -1,6 +1,32 @@
 import { RDProduct } from '../product/types';
 import { RecommendationService } from './types';
 
+const calculateMatchScore = (
+  product: RDProduct,
+  allOptionsToMatch: Set<string>
+): number => {
+  let score = 0;
+
+  for (const preference of product.preferences) {
+    if (allOptionsToMatch.has(preference)) score++;
+  }
+
+  for (const feature of product.features) {
+    if (allOptionsToMatch.has(feature)) score++;
+  }
+
+  return score;
+};
+
+const applyRecommendationType = (
+  products: RDProduct[],
+  type?: string
+): RDProduct[] => {
+  if (type === 'SingleProduct') return products.slice(0, 1);
+
+  return products;
+};
+
 const recommendationService: RecommendationService = {
   getRecommendations: (formData, products = []) => {
     const allOptionsToMatch = new Set([
@@ -8,36 +34,24 @@ const recommendationService: RecommendationService = {
       ...formData.selectedFeatures,
     ]);
 
-    let productsWithMatch: RDProduct[][] = [];
+    const productsWithMatch: RDProduct[][] = [];
 
     for (const product of products) {
-      let matchCount = 0;
+      const score = calculateMatchScore(product, allOptionsToMatch);
 
-      for (const preference of product.preferences) {
-        if (allOptionsToMatch.has(preference)) matchCount++;
-      }
+      if (score > 0) {
+        if (!productsWithMatch[score]) productsWithMatch[score] = [];
 
-      for (const feature of product.features) {
-        if (allOptionsToMatch.has(feature)) matchCount++;
-      }
-
-      if (matchCount > 0) {
-        const hasMatchCountProducts = productsWithMatch[matchCount];
-
-        if (!hasMatchCountProducts) {
-          productsWithMatch[matchCount] = [];
-        }
-
-        productsWithMatch[matchCount].push(product);
+        productsWithMatch[score].push(product);
       }
     }
 
     const recommendedProducts = productsWithMatch.flat().reverse();
 
-    if (formData?.selectedRecommendationType === 'SingleProduct')
-      return recommendedProducts.slice(0, 1);
-
-    return recommendedProducts;
+    return applyRecommendationType(
+      recommendedProducts,
+      formData?.selectedRecommendationType
+    );
   },
 };
 
