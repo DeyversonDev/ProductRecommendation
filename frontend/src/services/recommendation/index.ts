@@ -4,8 +4,8 @@ import { RecommendationService } from './types';
 const recommendationService: RecommendationService = {
   getRecommendations: (formData, products = []) => {
     const allOptionsToMatch = new Set([
-      ...(formData?.selectedPreferences || []),
-      ...(formData?.selectedFeatures || []),
+      ...formData.selectedPreferences,
+      ...formData.selectedFeatures,
     ]);
 
     let productsWithMatch: RDProduct[][] = [];

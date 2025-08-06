@@ -3,7 +3,7 @@ import { RDProduct } from '../product/types';
 
 export type RecommendationService = {
   getRecommendations: (
-    formData?: FormValues,
+    formData: FormValues,
     products?: RDProduct[]
   ) => RDProduct[];
 };
